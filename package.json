@@ -13,7 +13,7 @@
     "test-nodeunit": "./test-nodeunit",
     "test-qunit": "./test-qunit"
   },
-  "main": "./chrono",
+  "main": "./chrono.min",
   "devDependencies": {
     "qunitjs": "~1.12.0",
     "karma-script-launcher": "~0.1.0",

@@ -2,10 +2,10 @@
 // version : 0.0.5
 // author : Wanasit T.
 // license : MIT
-(function () {
-  var moment,
-      chrono;
+var moment,
+    chrono;
 
+(function () {
   chrono = function(){
     for(var attr in chrono){
       this[attr] = chrono[attr]
@@ -24,9 +24,9 @@
   chrono.timezoneMap = {};
   chrono.parsers = {};
   chrono.refiners = {};
-  
+
   chrono.parse = function(text, referrenceDate, option) {
-    
+
     option = option || {}
 
     if(typeof(referrenceDate) === 'string'){
