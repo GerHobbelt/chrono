@@ -1,5 +1,4 @@
 echo '(function(){' > tmp
-echo "var moment = require('moment');" >> tmp
 cat ./chrono.js >> tmp
 cat ./timezone.js >> tmp
 cat ./parsers/ParseResult.js >> tmp

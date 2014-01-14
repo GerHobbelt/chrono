@@ -3,8 +3,10 @@
 // author : Wanasit T.
 // license : MIT
 (function () {
-  
-  var chrono = function(){
+  var moment,
+      chrono;
+
+  chrono = function(){
     for(var attr in chrono){
       this[attr] = chrono[attr]
     }
@@ -35,57 +37,27 @@
 
     var results = this.integratedParse(text, referrenceDate, option);
     var results = this.integratedRefine(text, results, option);
-    
+
     return results;
   }
-  
+
   chrono.parseDate = function(text, referrenceDate, timezoneOffset) {
-    
+
     var results = this.parse(text, referrenceDate);
-    
+
     if(results.length >= 1) return results[0].start.date(timezoneOffset);
     else return null;
   }
-  
-  if(typeof exports == 'undefined'){
+
+  if (typeof exports == 'undefined'){
     //Browser Code
     moment = moment || window.moment;
     window.chrono = chrono;
+  } else {
+    moment = require('moment');
+    module.exports = chrono
   }
-  else{
-    //Node JS
-    if(typeof moment == 'undefined') eval("var moment = require('./moment');");
-    var fs = require('fs');
-    
-    function loadModuleDirs(dir){
-      
-      var module_dirs = fs.readdirSync(__dirname+'/'+dir);
-      module_dirs = module_dirs.filter(function(name) { return !name.match(/\./ ) })
-      for(var i in module_dirs){
-        var dirname = module_dirs[i];
-        if(typeof(dirname) == 'function') continue;
-        var parser_files = fs.readdirSync( __dirname +'/'+dir + '/' + dirname);
-
-        for(var j in parser_files){
-          var filename = parser_files[j];
-          if(typeof(filename) == 'function') continue;
-          if(!filename.match(/\.js$/)) continue;
-          eval(fs.readFileSync(__dirname + '/'+dir+'/'+dirname+'/'+filename)+'');
-        }
-      }
-    }
-    
-    eval(fs.readFileSync(__dirname + '/timezone.js')+'');
-    eval(fs.readFileSync(__dirname + '/parsers/ParseResult.js')+'');
-    eval(fs.readFileSync(__dirname + '/parsers/Parser.js')+'');
-    eval(fs.readFileSync(__dirname + '/parsers/IntegratedParsing.js')+'');
-    loadModuleDirs('parsers');
-    eval(fs.readFileSync(__dirname + '/refiners/IntegratedRefinement.js')+'');
-    loadModuleDirs('refiners');
-    
-    module.exports = chrono;
-  }
-  
 })();
+
 
 
