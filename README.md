@@ -1,6 +1,13 @@
 Chrono
 ======
 
+*** This is a chrono fork from wanasit repo, I make some modify to work with my project. ***
+*** Changed ***
+- Remove DE language
+- Keep tonigh is today not tomorrow
+********************************************************************************************
+
+
 A natural language date parser in Javascript. It is designed to extract date informations from any given text. 
 
 Chrono supports a number of date and time formats, including :
@@ -10,14 +17,6 @@ Chrono supports a number of date and time formats, including :
 * this Friday from 13:00 - 16.00
 * Saturday, 17 August 2013 - Monday, 19 August 2013
 * Sat Aug 17 2013 18:40:39 GMT+0900 (JST)
-
-### Node.js 
-
-    npm install chrono-node
-
-### Browser
-
-    <script src="https://rawgithub.com/wanasit/chrono/master/chrono.min.js"></script>
 
 ## USAGE
 
