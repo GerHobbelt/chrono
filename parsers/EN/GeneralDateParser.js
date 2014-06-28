@@ -79,34 +79,34 @@
       result = resultWithTime || result;
 
       if(result.text.replace(/\s/g,'').length == 0) return null; 
-      if(lowercase_text.match('night')){
+      // if(lowercase_text.match('night')){
         
-        if(!resultWithTime){ // Midnight
+      //   if(!resultWithTime){ // Midnight
           
-          result.start.day = date.date() + 1;
-          result.start.hour = 0;
-          result.start.minute = 0;
-          result.start.second = 0;
-          result.start.impliedComponents = ['hour','minute','second'];
-          result = new chrono.ParseResult(result);
+      //     result.start.day = date.date() + 1;
+      //     result.start.hour = 0;
+      //     result.start.minute = 0;
+      //     result.start.second = 0;
+      //     result.start.impliedComponents = ['hour','minute','second'];
+      //     result = new chrono.ParseResult(result);
           
-        }else if(resultWithTime.start.hour < 6){ //Today's 0am - 12am
+      //   }else if(resultWithTime.start.hour < 6){ //Today's 0am - 12am
           
-          date.add('d',1);
-          result.start.day = date.date()
-          result.start.month = date.month()
-          result.start.year = date.year()
-          result = new chrono.ParseResult(result);
+      //     date.add('d',1);
+      //     result.start.day = date.date()
+      //     result.start.month = date.month()
+      //     result.start.year = date.year()
+      //     result = new chrono.ParseResult(result);
           
-        }else if(resultWithTime.start.hour < 12 && !resultWithTime.start.meridiem){ //Today's 0am - 12am
+      //   }else if(resultWithTime.start.hour < 12 && !resultWithTime.start.meridiem){ //Today's 0am - 12am
           
-          result.start.hour = resultWithTime.start.hour + 12;
-          result.start.meridiem = 'pm';
-          result.start.impliedComponents = result.start.impliedComponents || [];
-          result.start.impliedComponents.push('meridiem')
-          result = new chrono.ParseResult(result);
-        }
-      }
+      //     result.start.hour = resultWithTime.start.hour + 12;
+      //     result.start.meridiem = 'pm';
+      //     result.start.impliedComponents = result.start.impliedComponents || [];
+      //     result.start.impliedComponents.push('meridiem')
+      //     result = new chrono.ParseResult(result);
+      //   }
+      // }
       
       return result;
     };
